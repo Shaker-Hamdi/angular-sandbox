@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>Angular Sandbox</title>
+  </head>
+  <body>
+
+    <input type="text" ng-model="Name" placeholder="Type Your Name..."><br>
+
+    <input id="yourName" type="checkbox" ng-model="name"><label for="yourName">Hide</label>
+
+    <div ng-hide="name">
+      <h1>Hello, {{Name || "World"}}</h1>
+    </div>
+
+    <hr>
+
+    Filter: <input type="search" ng-model="search">
+
+    <div ng-controller="ListCtrl">
+      <ul>
+        <li ng-repeat="person in people | filter:search">
+          {{person.name}} : {{person.age}}
+        </li>
+      </ul>
+
+      <h3>Add a new person:</h3>
+      Name: <input type="text" ng-model="newName"><br>
+      age: <input type="number" ng-model="newAge"><br>
+      <button ng-click="add()">Add</button>
+    </div>
+
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/myScript.js"></script>
+  </body>
+</html>
