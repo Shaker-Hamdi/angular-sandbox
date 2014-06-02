@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Angular Sandbox</title>
+
+    <link href="css/upload.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <form id="upload" method="post" action="#" enctype="multipart/form-data">
+        <div id="drop">
+            Drop Here
+
+            <a>Browse</a>
+            <input type="file" name="upl" multiple />
+        </div>
+
+        <ul>
+            <!-- The file uploads will be shown here -->
+        </ul>
+
+    </form>
+    
+
+    <script src="js/jquery-2.1.0.min.js"></script>
+
+    <!-- jQuery File Upload Dependencies -->
+    <script src="js/upload/jquery.knob.js"></script>
+    <script src="js/upload/jquery.ui.widget.js"></script>
+    <script src="js/upload/jquery.iframe-transport.js"></script>
+    <script src="js/upload/jquery.fileupload.js"></script>
+
+    <script src="js/upload.js"></script>
+  </body>
+</html>

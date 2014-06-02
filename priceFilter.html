@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="App">
+  <head>
+    <title>Angular Sandbox</title>
+  </head>
+  <body>
+
+    <div ng-controller="MainController">
+        <form action="#">
+          <select ng-model="minVal">
+              <option ng-repeat="min in mins" value="{{min}}">{{min}}</option>
+          </select>
+          <select>
+              <option ng-repeat="max in getMxRange()" value="{{max}}">{{max}}</option>
+          </select>
+        </form>
+    </div>
+
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/priceFilter.js"></script>
+  </body>
+</html>

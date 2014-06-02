@@ -1,34 +1,52 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="testApp">
   <head>
     <title>Angular Sandbox</title>
   </head>
   <body>
 
-    <input type="text" ng-model="Name" placeholder="Type Your Name..."><br>
-
-    <input id="yourName" type="checkbox" ng-model="name"><label for="yourName">Hide</label>
-
-    <div ng-hide="name">
-      <h1>Hello, {{Name || "World"}}</h1>
+    <div ng-controller="MainCtrl">
+        <form>
+            <p>
+                <select ng-model="selectedItem" ng-options="i.name for i in items" ng-change="selectedSubItem=null;selectedSubSubItem=null"></select>
+            </p>
+            <p ng-show="selectedItem.subItems">
+                <select ng-model="selectedSubItem" ng-options="i.name for i in selectedItem.subItems" ng-change="selectedSubSubItem=null"></select>
+            </p>
+            
+            <p ng-show="selectedSubItem.subItems">
+                <select ng-model="selectedSubSubItem" ng-options="i.name for i in selectedSubItem.subItems"></select>
+            </p>
+            
+            <input type="hidden" name="selection" value="{{ (selectedSubSubItem || selectedSubItem || selectedItem).name }}" />
+            RESULT: {{ (selectedSubSubItem || selectedSubItem || selectedItem).name }}<br/>
+                
+            <input type="submit" value="submit">
+        </form>
+    
     </div>
 
-    <hr>
 
-    Filter: <input type="search" ng-model="search">
-
-    <div ng-controller="ListCtrl">
-      <ul>
-        <li ng-repeat="person in people | filter:search">
-          {{person.name}} : {{person.age}}
-        </li>
-      </ul>
-
-      <h3>Add a new person:</h3>
-      Name: <input type="text" ng-model="newName"><br>
-      age: <input type="number" ng-model="newAge"><br>
-      <button ng-click="add()">Add</button>
-    </div>
+    <!-- <div ng-controller="MainCtrl">
+      
+        <form>
+            <p>
+                <select ng-model="selectedItem[0]" ng-options="i.name for i in items"></select>
+            </p>
+            <p ng-show="selectedItem[0].subItems">
+                <select ng-model="selectedItem[1]" ng-options="i.name for i in selectedItem[0].subItems"></select>
+            </p>
+            
+            <p ng-show="selectedItem[1].subItems">
+                <select ng-model="selectedItem[2]" ng-options="i.name for i in selectedItem[1].subItems"></select>
+            </p>
+            
+            <input type="hidden" name="selection" ng-value="choiceValue()">
+                
+            <input type="submit" value="submit">
+        </form>
+    
+    </div> -->
 
 
     <script src="js/angular.min.js"></script>
