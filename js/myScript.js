@@ -1,6 +1,16 @@
 var app = angular.module('testApp', []);
 
 app.controller('MainCtrl', function($scope) {
+  $scope.items = app_data.locations;
+});
+
+
+//console.log(app_data);
+
+
+/*var app = angular.module('testApp', []);
+
+app.controller('MainCtrl', function($scope) {
   $scope.items = [
     {name:'item1'},
     {name:'item2', subItems: [
@@ -11,7 +21,7 @@ app.controller('MainCtrl', function($scope) {
       	]}
       ]}
     ];
-});
+});*/
 
 
 /*var app = angular.module('testApp', []);
