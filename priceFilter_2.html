@@ -98,27 +98,26 @@
     };
     </script>
   </head>
+
   <body>
 
     <div ng-controller="MainCtrl">
         <form action="#">
-            <select id="chooseSection" ng-model="selectedSection" ng-change="sectionChanged()">
+            <select ng-model="firstSelect" ng-init="firstSelect = 1">
                 <option value="1">For Sale</option>
                 <option value="2">For Rent</option>
             </select>
-            <select ng-model="minVal">
+            <select ng-model="minVal" ng-options="price.value for price in app_data | filter:{'section':firstSelect}">
                 <option value="" selected>Min Price</option>
-                <option ng-repeat="min in mins" value="{{min}}">{{min}}</option>
             </select>
-            <select>
+            <select ng-model="maxVal" ng-options="price.value for price in app_data | filter:{'section':firstSelect}">
                 <option value="" selected>Max Price</option>
-                <option ng-repeat="max in getMxRange()" value="{{max}}">{{max}}</option>
             </select>
         </form>
     </div>
 
 
     <script src="js/angular.min.js"></script>
-    <script src="js/priceFilter.js"></script>
+    <script src="js/priceFilter2.js"></script>
   </body>
 </html>
